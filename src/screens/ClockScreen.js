@@ -212,8 +212,8 @@ export default function ClockScreen() {
           <Switch
             value={demoMode}
             onValueChange={setDemoMode}
-            trackColor={{ false: '#cbd5e1', true: '#bae6fd' }}
-            thumbColor={demoMode ? '#0284c7' : '#94a3b8'}
+            trackColor={{ false: '#4b5563', true: 'rgba(235, 5, 5, 0.4)' }}
+            thumbColor={demoMode ? '#EB0505' : '#9ca3af'}
           />
         </View>
 
@@ -221,7 +221,7 @@ export default function ClockScreen() {
         <View style={styles.card}>
           <View style={styles.cardHeaderRow}>
             <View style={styles.cardHeaderLeft}>
-              <MaterialCommunityIcons name="map-marker-radius" size={20} color="#0284c7" />
+              <MaterialCommunityIcons name="map-marker-radius" size={20} color="#EB0505" />
               <Text style={styles.cardTitle}>SITE GEOFENCE PERIMETER</Text>
             </View>
             <View style={styles.radiusPill}>
@@ -263,10 +263,10 @@ export default function ClockScreen() {
               disabled={isLoadingGps}
             >
               {isLoadingGps ? (
-                <ActivityIndicator size="small" color="#0284c7" />
+                <ActivityIndicator size="small" color="#EB0505" />
               ) : (
                 <>
-                  <Ionicons name="refresh" size={14} color="#0284c7" />
+                  <Ionicons name="refresh" size={14} color="#EB0505" />
                   <Text style={styles.refreshGpsText}>Refresh</Text>
                 </>
               )}
@@ -373,7 +373,7 @@ export default function ClockScreen() {
 const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
-    backgroundColor: '#f8fafc',
+    backgroundColor: '#333333',
   },
   scrollArea: {
     flex: 1,
@@ -383,22 +383,22 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
   },
   statusHeroCard: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#262626',
     borderRadius: 18,
     padding: 16,
     borderWidth: 1,
     marginBottom: 12,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.06,
+    shadowOpacity: 0.15,
     shadowRadius: 6,
     elevation: 3,
   },
   heroActive: {
-    borderColor: '#059669',
+    borderColor: '#10b981',
   },
   heroInactive: {
-    borderColor: '#e2e8f0',
+    borderColor: '#404040',
   },
   heroTop: {
     flexDirection: 'row',
@@ -428,10 +428,10 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   heroStatusTextActive: {
-    color: '#047857',
+    color: '#34d399',
   },
   heroStatusTextInactive: {
-    color: '#64748b',
+    color: '#9ca3af',
   },
   timestampGrid: {
     flexDirection: 'row',
@@ -440,37 +440,37 @@ const styles = StyleSheet.create({
   },
   timestampBox: {
     flex: 1,
-    backgroundColor: '#f8fafc',
+    backgroundColor: '#2e2e2e',
     borderRadius: 10,
     padding: 10,
     borderWidth: 1,
-    borderColor: '#f1f5f9',
+    borderColor: '#3a3a3a',
     alignItems: 'center',
   },
   timestampLabel: {
     fontSize: 10,
     fontWeight: '700',
-    color: '#64748b',
+    color: '#9ca3af',
     letterSpacing: 0.5,
   },
   timestampValue: {
     fontFamily: 'monospace',
     fontSize: 15,
     fontWeight: '800',
-    color: '#0f172a',
+    color: '#ffffff',
     marginTop: 2,
   },
   timestampDate: {
     fontSize: 10,
-    color: '#94a3b8',
+    color: '#9ca3af',
     marginTop: 1,
   },
   demoModeCard: {
-    backgroundColor: '#fffbeb',
+    backgroundColor: '#2a2416',
     borderRadius: 14,
     padding: 14,
     borderWidth: 1,
-    borderColor: '#fde68a',
+    borderColor: '#854d0e',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -487,31 +487,31 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: '#fef3c7',
+    backgroundColor: '#451a03',
     alignItems: 'center',
     justifyContent: 'center',
   },
   demoModeTitle: {
     fontSize: 13,
     fontWeight: '800',
-    color: '#92400e',
+    color: '#fef3c7',
   },
   demoModeDescription: {
     fontSize: 11,
-    color: '#b45309',
+    color: '#fde68a',
     marginTop: 2,
     lineHeight: 15,
   },
   card: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#262626',
     borderRadius: 16,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
+    borderColor: '#404040',
     marginBottom: 12,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.04,
+    shadowOpacity: 0.15,
     shadowRadius: 3,
     elevation: 2,
   },
@@ -529,17 +529,17 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#0f172a',
+    color: '#ffffff',
     letterSpacing: 0.5,
   },
   radiusPill: {
-    backgroundColor: '#e0f2fe',
+    backgroundColor: 'rgba(235, 5, 5, 0.15)',
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 12,
   },
   radiusPillText: {
-    color: '#0284c7',
+    color: '#EB0505',
     fontSize: 11,
     fontWeight: '700',
   },
@@ -554,23 +554,23 @@ const styles = StyleSheet.create({
   },
   detailLabel: {
     fontSize: 12,
-    color: '#64748b',
+    color: '#9ca3af',
     fontWeight: '500',
   },
   detailValue: {
     fontSize: 13,
-    color: '#0f172a',
+    color: '#ffffff',
     fontWeight: '700',
   },
   detailValueMono: {
     fontFamily: 'monospace',
     fontSize: 12,
-    color: '#0f172a',
+    color: '#ffffff',
     fontWeight: '700',
   },
   detailValueSmall: {
     fontSize: 11,
-    color: '#334155',
+    color: '#d1d5db',
     fontWeight: '500',
     maxWidth: '65%',
     textAlign: 'right',
@@ -582,11 +582,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 6,
-    backgroundColor: '#f0f9ff',
+    backgroundColor: 'rgba(235, 5, 5, 0.12)',
   },
   refreshGpsText: {
     fontSize: 11,
-    color: '#0284c7',
+    color: '#EB0505',
     fontWeight: '700',
   },
   telemetryGrid: {
@@ -597,29 +597,29 @@ const styles = StyleSheet.create({
   },
   telemetryItem: {
     width: '48%',
-    backgroundColor: '#f8fafc',
+    backgroundColor: '#2e2e2e',
     borderRadius: 10,
     padding: 10,
     borderWidth: 1,
-    borderColor: '#f1f5f9',
+    borderColor: '#3a3a3a',
   },
   telemetryLabel: {
     fontSize: 10,
-    color: '#64748b',
+    color: '#9ca3af',
     fontWeight: '600',
   },
   telemetryValue: {
     fontFamily: 'monospace',
     fontSize: 14,
     fontWeight: '800',
-    color: '#0f172a',
+    color: '#ffffff',
     marginTop: 2,
   },
   distGreen: {
-    color: '#047857',
+    color: '#34d399',
   },
   distRed: {
-    color: '#dc2626',
+    color: '#EB0505',
   },
   noGpsContainer: {
     paddingVertical: 14,
@@ -627,7 +627,7 @@ const styles = StyleSheet.create({
   },
   noGpsText: {
     fontSize: 12,
-    color: '#64748b',
+    color: '#9ca3af',
     fontStyle: 'italic',
   },
   geofenceStatusFooter: {
@@ -636,32 +636,32 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingTop: 10,
     borderTopWidth: 1,
-    borderTopColor: '#f1f5f9',
+    borderTopColor: '#3a3a3a',
   },
   geofenceStatusLabel: {
     fontSize: 12,
-    color: '#64748b',
+    color: '#9ca3af',
     fontWeight: '600',
   },
   geofencePendingText: {
     fontSize: 11,
-    color: '#94a3b8',
+    color: '#9ca3af',
     fontStyle: 'italic',
   },
   errorBox: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    backgroundColor: '#fef2f2',
+    backgroundColor: 'rgba(235, 5, 5, 0.15)',
     borderWidth: 1,
-    borderColor: '#fecaca',
+    borderColor: 'rgba(235, 5, 5, 0.35)',
     borderRadius: 12,
     padding: 12,
     marginBottom: 14,
   },
   errorBoxText: {
     fontSize: 12,
-    color: '#b91c1c',
+    color: '#fca5a5',
     fontWeight: '600',
     flex: 1,
   },
@@ -677,15 +677,16 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.25,
     shadowRadius: 8,
     elevation: 4,
   },
   bigClockInButton: {
-    backgroundColor: '#059669', // Emerald
+    backgroundColor: '#EB0505', // RSG Primary Red
+    shadowColor: '#EB0505',
   },
   bigClockOutButton: {
-    backgroundColor: '#dc2626', // Red
+    backgroundColor: '#404040',
   },
   bigButtonTitle: {
     color: '#ffffff',

@@ -7,8 +7,8 @@ export default function StatusBadge({ type, value, label, size = 'medium' }) {
     if (value === 'demo') {
       return (
         <View style={[styles.badge, styles.demoGeofence, size === 'small' && styles.badgeSmall]}>
-          <Ionicons name="shield-checkmark" size={size === 'small' ? 12 : 14} color="#38bdf8" />
-          <Text style={[styles.text, styles.textBlue, size === 'small' && styles.textSmall]}>
+          <Ionicons name="shield-checkmark" size={size === 'small' ? 12 : 14} color="#f59e0b" />
+          <Text style={[styles.text, styles.textAmber, size === 'small' && styles.textSmall]}>
             DEMO BYPASS (ACTIVE)
           </Text>
         </View>
@@ -27,7 +27,7 @@ export default function StatusBadge({ type, value, label, size = 'medium' }) {
         <Ionicons
           name={inside ? 'location' : 'alert-circle'}
           size={size === 'small' ? 12 : 14}
-          color={inside ? '#10b981' : '#dc2626'}
+          color={inside ? '#10b981' : '#EB0505'}
         />
         <Text
           style={[
@@ -116,24 +116,24 @@ const styles = StyleSheet.create({
     gap: 3,
   },
   greenBadge: {
-    backgroundColor: '#ecfdf5',
-    borderColor: '#a7f3d0',
+    backgroundColor: 'rgba(16, 185, 129, 0.15)',
+    borderColor: 'rgba(16, 185, 129, 0.35)',
   },
   redBadge: {
-    backgroundColor: '#fef2f2',
-    borderColor: '#fecaca',
+    backgroundColor: 'rgba(235, 5, 5, 0.15)',
+    borderColor: 'rgba(235, 5, 5, 0.4)',
   },
   amberBadge: {
-    backgroundColor: '#fffbeb',
-    borderColor: '#fde68a',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
+    borderColor: 'rgba(245, 158, 11, 0.35)',
   },
   slateBadge: {
-    backgroundColor: '#f1f5f9',
-    borderColor: '#e2e8f0',
+    backgroundColor: '#333333',
+    borderColor: '#4d4d4d',
   },
   demoGeofence: {
-    backgroundColor: '#f0f9ff',
-    borderColor: '#bae6fd',
+    backgroundColor: 'rgba(245, 158, 11, 0.15)',
+    borderColor: 'rgba(245, 158, 11, 0.35)',
   },
   text: {
     fontSize: 11,
@@ -145,18 +145,18 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   textGreen: {
-    color: '#047857',
+    color: '#34d399',
   },
   textRed: {
-    color: '#dc2626',
+    color: '#f87171',
   },
   textAmber: {
-    color: '#b45309',
+    color: '#fbbf24',
   },
   textSlate: {
-    color: '#475569',
+    color: '#9ca3af',
   },
   textBlue: {
-    color: '#0284c7',
+    color: '#EB0505',
   },
 });

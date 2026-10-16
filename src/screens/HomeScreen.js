@@ -207,7 +207,7 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.profileCard}>
           <View style={styles.profileTopRow}>
             <View style={styles.avatarCircle}>
-              <FontAwesome5 name="user-shield" size={24} color="#0284c7" />
+              <FontAwesome5 name="user-shield" size={24} color="#EB0505" />
             </View>
             <View style={styles.guardInfo}>
               <View style={styles.nameIdRow}>
@@ -224,7 +224,7 @@ export default function HomeScreen({ navigation }) {
 
           <View style={styles.siteInfoRow}>
             <View style={styles.siteIconBox}>
-              <Ionicons name="business" size={16} color="#0f172a" />
+              <Ionicons name="business" size={16} color="#e2e8f0" />
             </View>
             <View style={{ flex: 1 }}>
               <Text style={styles.siteName}>{MOCK_SITE.name}</Text>
@@ -291,7 +291,7 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.patrolCard}>
           <View style={styles.patrolCardHeader}>
             <View style={styles.patrolTitleRow}>
-              <MaterialCommunityIcons name="clipboard-check-outline" size={20} color="#0284c7" />
+              <MaterialCommunityIcons name="clipboard-check-outline" size={20} color="#EB0505" />
               <Text style={styles.patrolCardTitle}>PATROL ROUND</Text>
             </View>
             <Text style={styles.patrolCountText}>
@@ -337,7 +337,7 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.patrolNavButtonText}>
               {isClockedIn ? 'GO TO PATROL SCANNER' : 'VIEW CHECKPOINTS'}
             </Text>
-            <Ionicons name="chevron-forward" size={16} color="#0284c7" />
+            <Ionicons name="chevron-forward" size={16} color="#EB0505" />
           </TouchableOpacity>
         </View>
 
@@ -345,7 +345,7 @@ export default function HomeScreen({ navigation }) {
         <View style={styles.geofenceLogCard}>
           <View style={styles.geofenceLogHeader}>
             <View style={styles.geofenceLogTitleRow}>
-              <MaterialCommunityIcons name="map-marker-distance" size={20} color="#0284c7" />
+              <MaterialCommunityIcons name="map-marker-distance" size={20} color="#EB0505" />
               <Text style={styles.geofenceLogTitle}>GEOFENCE ACTIVITY LOG</Text>
             </View>
             <View style={styles.eventCountBadge}>
@@ -477,7 +477,7 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
-    backgroundColor: '#f8fafc',
+    backgroundColor: '#333333',
   },
   scrollArea: {
     flex: 1,
@@ -487,15 +487,15 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
   },
   profileCard: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#262626',
     borderRadius: 16,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
+    borderColor: '#404040',
     marginBottom: 8,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.15,
     shadowRadius: 3,
     elevation: 2,
   },
@@ -508,9 +508,9 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 24,
-    backgroundColor: '#f0f9ff',
+    backgroundColor: 'rgba(235, 5, 5, 0.12)',
     borderWidth: 1.5,
-    borderColor: '#bae6fd',
+    borderColor: 'rgba(235, 5, 5, 0.35)',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -525,30 +525,30 @@ const styles = StyleSheet.create({
   guardName: {
     fontSize: 17,
     fontWeight: '800',
-    color: '#0f172a',
+    color: '#ffffff',
   },
   guardIdBadge: {
-    backgroundColor: '#f1f5f9',
+    backgroundColor: '#333333',
     paddingHorizontal: 6,
     paddingVertical: 2,
     borderRadius: 6,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
+    borderColor: '#4d4d4d',
   },
   guardIdText: {
     fontSize: 10,
     fontWeight: '800',
-    color: '#0284c7',
+    color: '#EB0505',
   },
   guardRole: {
     fontSize: 12,
-    color: '#64748b',
+    color: '#9ca3af',
     marginTop: 2,
     fontWeight: '500',
   },
   divider: {
     height: 1,
-    backgroundColor: '#f1f5f9',
+    backgroundColor: '#383838',
     marginVertical: 12,
   },
   siteInfoRow: {
@@ -560,18 +560,18 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 8,
-    backgroundColor: '#f1f5f9',
+    backgroundColor: '#333333',
     alignItems: 'center',
     justifyContent: 'center',
   },
   siteName: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#0f172a',
+    color: '#ffffff',
   },
   siteShift: {
     fontSize: 12,
-    color: '#64748b',
+    color: '#9ca3af',
     marginTop: 1,
   },
   gpsRow: {
@@ -581,22 +581,22 @@ const styles = StyleSheet.create({
     marginTop: 12,
     paddingTop: 10,
     borderTopWidth: 1,
-    borderTopColor: '#f1f5f9',
+    borderTopColor: '#383838',
   },
   gpsLabel: {
     fontSize: 12,
-    color: '#64748b',
+    color: '#9ca3af',
     fontWeight: '600',
   },
   gpsUnknown: {
-    backgroundColor: '#f1f5f9',
+    backgroundColor: '#333333',
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 6,
   },
   gpsUnknownText: {
     fontSize: 11,
-    color: '#94a3b8',
+    color: '#9ca3af',
     fontWeight: '600',
   },
   clockActionButton: {
@@ -609,15 +609,15 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 3,
   },
   clockActionIn: {
-    backgroundColor: '#059669', // Emerald Green
+    backgroundColor: '#EB0505', // RSG Primary Red
   },
   clockActionOut: {
-    backgroundColor: '#334155', // Slate dark
+    backgroundColor: '#404040',
   },
   clockActionText: {
     color: '#ffffff',
@@ -626,15 +626,15 @@ const styles = StyleSheet.create({
     letterSpacing: 0.8,
   },
   patrolCard: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#262626',
     borderRadius: 16,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
+    borderColor: '#404040',
     marginVertical: 6,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.15,
     shadowRadius: 3,
     elevation: 2,
   },
@@ -652,17 +652,17 @@ const styles = StyleSheet.create({
   patrolCardTitle: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#0f172a',
+    color: '#ffffff',
     letterSpacing: 0.5,
   },
   patrolCountText: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#0284c7',
+    color: '#EB0505',
   },
   progressBarTrack: {
     height: 8,
-    backgroundColor: '#e2e8f0',
+    backgroundColor: '#3a3a3a',
     borderRadius: 4,
     overflow: 'hidden',
     marginBottom: 12,
@@ -691,23 +691,23 @@ const styles = StyleSheet.create({
   miniId: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#64748b',
+    color: '#9ca3af',
   },
   miniIdDone: {
-    color: '#047857',
+    color: '#34d399',
   },
   miniName: {
     fontSize: 13,
-    color: '#334155',
+    color: '#d1d5db',
     flex: 1,
   },
   miniNameDone: {
-    color: '#0f172a',
+    color: '#ffffff',
     fontWeight: '500',
   },
   miniStatus: {
     fontSize: 11,
-    color: '#94a3b8',
+    color: '#9ca3af',
     fontWeight: '600',
   },
   patrolNavButton: {
@@ -716,13 +716,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 4,
     paddingVertical: 10,
-    backgroundColor: '#f0f9ff',
+    backgroundColor: 'rgba(235, 5, 5, 0.12)',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#bae6fd',
+    borderColor: 'rgba(235, 5, 5, 0.35)',
   },
   patrolNavButtonText: {
-    color: '#0284c7',
+    color: '#EB0505',
     fontSize: 12,
     fontWeight: '700',
     letterSpacing: 0.5,
@@ -739,25 +739,25 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   resetDemoText: {
-    color: '#64748b',
+    color: '#9ca3af',
     fontSize: 12,
     fontWeight: '600',
   },
   bottomSosContainer: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#262626',
     paddingHorizontal: 16,
     paddingTop: 10,
     paddingBottom: Platform.OS === 'ios' ? 24 : 12,
     borderTopWidth: 1,
-    borderTopColor: '#e2e8f0',
+    borderTopColor: '#404040',
   },
   sosButton: {
-    backgroundColor: '#dc2626', // Emergency Red
+    backgroundColor: '#EB0505', // RSG Primary Red
     borderRadius: 16,
     paddingVertical: 14,
-    shadowColor: '#dc2626',
+    shadowColor: '#EB0505',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.35,
+    shadowOpacity: 0.4,
     shadowRadius: 8,
     elevation: 6,
   },
@@ -785,13 +785,13 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.25,
     shadowRadius: 6,
     elevation: 4,
     gap: 12,
   },
   geofenceBannerDanger: {
-    backgroundColor: '#dc2626', // Urgent perimeter breach red
+    backgroundColor: '#EB0505', // Urgent perimeter breach red
     borderColor: '#b91c1c',
     borderWidth: 1,
   },
@@ -871,12 +871,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
-    backgroundColor: '#ecfdf5',
+    backgroundColor: 'rgba(16, 185, 129, 0.15)',
     paddingHorizontal: 6,
     paddingVertical: 2,
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: '#a7f3d0',
+    borderColor: 'rgba(16, 185, 129, 0.35)',
   },
   liveDot: {
     width: 6,
@@ -887,21 +887,21 @@ const styles = StyleSheet.create({
   liveWatchText: {
     fontSize: 9,
     fontWeight: '800',
-    color: '#047857',
+    color: '#34d399',
     letterSpacing: 0.3,
   },
 
   // Geofence Activity Log Card
   geofenceLogCard: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#262626',
     borderRadius: 16,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
+    borderColor: '#404040',
     marginVertical: 6,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.15,
     shadowRadius: 3,
     elevation: 2,
   },
@@ -919,11 +919,11 @@ const styles = StyleSheet.create({
   geofenceLogTitle: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#0f172a',
+    color: '#ffffff',
     letterSpacing: 0.5,
   },
   eventCountBadge: {
-    backgroundColor: '#f1f5f9',
+    backgroundColor: '#333333',
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 8,
@@ -931,26 +931,26 @@ const styles = StyleSheet.create({
   eventCountText: {
     fontSize: 11,
     fontWeight: '700',
-    color: '#64748b',
+    color: '#d1d5db',
   },
   simControlsBox: {
-    backgroundColor: '#f8fafc',
+    backgroundColor: '#2e2e2e',
     borderRadius: 12,
     padding: 12,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
+    borderColor: '#444444',
     marginBottom: 12,
   },
   simTitle: {
     fontSize: 10,
     fontWeight: '800',
-    color: '#475569',
+    color: '#e2e8f0',
     letterSpacing: 0.6,
     marginBottom: 3,
   },
   simDesc: {
     fontSize: 11,
-    color: '#64748b',
+    color: '#9ca3af',
     marginBottom: 8,
     lineHeight: 15,
   },
@@ -969,20 +969,20 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   simBtnExit: {
-    backgroundColor: '#fef2f2',
-    borderColor: '#fecaca',
+    backgroundColor: 'rgba(235, 5, 5, 0.12)',
+    borderColor: 'rgba(235, 5, 5, 0.35)',
   },
   simBtnExitText: {
-    color: '#dc2626',
+    color: '#f87171',
     fontSize: 11,
     fontWeight: '700',
   },
   simBtnReturn: {
-    backgroundColor: '#ecfdf5',
-    borderColor: '#a7f3d0',
+    backgroundColor: 'rgba(16, 185, 129, 0.12)',
+    borderColor: 'rgba(16, 185, 129, 0.35)',
   },
   simBtnReturnText: {
-    color: '#059669',
+    color: '#34d399',
     fontSize: 11,
     fontWeight: '700',
   },
@@ -994,7 +994,7 @@ const styles = StyleSheet.create({
   },
   emptyLogText: {
     fontSize: 12,
-    color: '#64748b',
+    color: '#9ca3af',
     fontWeight: '500',
   },
   eventList: {
@@ -1006,7 +1006,7 @@ const styles = StyleSheet.create({
     gap: 10,
     paddingVertical: 6,
     borderBottomWidth: 1,
-    borderBottomColor: '#f1f5f9',
+    borderBottomColor: '#383838',
   },
   eventTypeDot: {
     width: 10,
@@ -1015,7 +1015,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   dotExit: {
-    backgroundColor: '#dc2626',
+    backgroundColor: '#EB0505',
   },
   dotReturn: {
     backgroundColor: '#10b981',
@@ -1034,20 +1034,20 @@ const styles = StyleSheet.create({
     letterSpacing: 0.4,
   },
   textExit: {
-    color: '#dc2626',
+    color: '#f87171',
   },
   textReturn: {
-    color: '#047857',
+    color: '#34d399',
   },
   eventTime: {
     fontSize: 10,
-    color: '#94a3b8',
+    color: '#9ca3af',
     fontFamily: 'monospace',
     fontWeight: '600',
   },
   eventMsg: {
     fontSize: 12,
-    color: '#334155',
+    color: '#d1d5db',
     marginTop: 2,
     fontWeight: '500',
   },

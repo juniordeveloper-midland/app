@@ -32,17 +32,17 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.safeArea} edges={['top', 'left', 'right']}>
-        <StatusBar style="light" backgroundColor="#0f172a" />
+        <StatusBar style="light" backgroundColor="#333333" />
         <NavigationContainer>
           <Tab.Navigator
             initialRouteName="Home"
             screenOptions={{
               headerShown: false,
-              tabBarActiveTintColor: '#0284c7', // Sky blue
-              tabBarInactiveTintColor: '#64748b', // Slate
+              tabBarActiveTintColor: '#EB0505', // RSG Primary Red
+              tabBarInactiveTintColor: '#9ca3af', // Slate/grey
               tabBarStyle: {
-                backgroundColor: '#ffffff',
-                borderTopColor: '#e2e8f0',
+                backgroundColor: '#262626',
+                borderTopColor: '#404040',
                 borderTopWidth: 1,
                 height: Platform.OS === 'ios' ? 88 : 64,
                 paddingBottom: Platform.OS === 'ios' ? 28 : 10,
@@ -50,7 +50,7 @@ export default function App() {
                 elevation: 8,
                 shadowColor: '#000000',
                 shadowOffset: { width: 0, height: -2 },
-                shadowOpacity: 0.05,
+                shadowOpacity: 0.15,
                 shadowRadius: 4,
               },
               tabBarLabelStyle: {
@@ -136,6 +136,6 @@ export default function App() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#0f172a',
+    backgroundColor: '#333333',
   },
 });

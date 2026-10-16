@@ -6,12 +6,12 @@
   <title>Region Security Guard - Patrol Checkpoint QR Codes</title>
   <style>
     :root {
-      --primary: #0f172a;
-      --accent: #0284c7;
+      --primary: #333333;
+      --accent: #EB0505;
       --success: #10b981;
-      --card-bg: #ffffff;
-      --bg: #f8fafc;
-      --border: #e2e8f0;
+      --card-bg: #262626;
+      --bg: #333333;
+      --border: #404040;
     }
 
     * {
@@ -23,7 +23,7 @@
 
     body {
       background-color: var(--bg);
-      color: #1e293b;
+      color: #f1f5f9;
       padding: 24px;
     }
 
@@ -33,15 +33,16 @@
     }
 
     header {
-      background: var(--primary);
+      background: #262626;
+      border: 1px solid var(--border);
       color: white;
-      padding: 24px 30px;
+      padding: 20px 28px;
       border-radius: 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 24px;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
     }
 
     .brand-title {
@@ -81,22 +82,22 @@
     }
 
     .btn:hover {
-      background: #0369a1;
+      background: #b91c1c;
     }
 
     .instruction-banner {
-      background: #e0f2fe;
-      border: 1px solid #bae6fd;
+      background: rgba(235, 5, 5, 0.12);
+      border: 1px solid rgba(235, 5, 5, 0.35);
       border-radius: 12px;
       padding: 16px 20px;
       margin-bottom: 24px;
-      color: #0369a1;
+      color: #fca5a5;
       font-size: 14px;
       line-height: 1.5;
     }
 
     .instruction-banner strong {
-      color: #0c4a6e;
+      color: #ffffff;
     }
 
     .grid {
@@ -107,12 +108,12 @@
 
     .checkpoint-card {
       background: var(--card-bg);
-      border: 2px dashed #cbd5e1;
+      border: 2px dashed #4b5563;
       border-radius: 16px;
       padding: 24px;
       text-align: center;
       position: relative;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -124,14 +125,14 @@
       left: 12px;
       font-size: 10px;
       font-weight: 800;
-      color: #94a3b8;
+      color: #9ca3af;
       letter-spacing: 0.5px;
       text-transform: uppercase;
     }
 
     .badge {
       display: inline-block;
-      background: #f1f5f9;
+      background: #333333;
       color: var(--accent);
       font-weight: 800;
       font-size: 12px;
@@ -139,19 +140,19 @@
       border-radius: 6px;
       margin-bottom: 8px;
       letter-spacing: 0.5px;
-      border: 1px solid #e2e8f0;
+      border: 1px solid #4d4d4d;
     }
 
     .card-title {
       font-size: 18px;
       font-weight: 800;
-      color: #0f172a;
+      color: #ffffff;
       margin-bottom: 4px;
     }
 
     .card-desc {
       font-size: 12px;
-      color: #64748b;
+      color: #9ca3af;
       margin-bottom: 16px;
       min-height: 36px;
     }
@@ -160,8 +161,8 @@
       background: white;
       padding: 12px;
       border-radius: 12px;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      border: 2px solid #EB0505;
+      box-shadow: 0 4px 10px rgba(235, 5, 5, 0.2);
       margin-bottom: 14px;
     }
 
@@ -175,18 +176,18 @@
       font-family: monospace;
       font-size: 16px;
       font-weight: 800;
-      color: #0f172a;
-      background: #f8fafc;
+      color: #ffffff;
+      background: #333333;
       padding: 6px 14px;
       border-radius: 8px;
-      border: 1px solid #e2e8f0;
+      border: 1px solid #4d4d4d;
     }
 
     footer {
       margin-top: 32px;
       text-align: center;
       font-size: 12px;
-      color: #94a3b8;
+      color: #9ca3af;
     }
 
     @media print {
@@ -211,12 +212,15 @@
 <body>
   <div class="container">
     <header>
-      <div>
-        <div class="brand-title">
-          🛡️ REGION SECURITY GUARD
-        </div>
-        <div class="brand-subtitle">
-          FIEGE Birmingham Gatehouse - Official Patrol Checkpoint Tags
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <img src="assets/RSG.jpg" alt="RSG Logo" style="width: 46px; height: 46px; border-radius: 10px; object-fit: contain; background: white; padding: 3px; border: 2px solid #EB0505;">
+        <div>
+          <div class="brand-title">
+            REGION SECURITY GUARD
+          </div>
+          <div class="brand-subtitle">
+            FIEGE Birmingham Gatehouse - Official Patrol Checkpoint Tags
+          </div>
         </div>
       </div>
       <div class="header-actions">
@@ -228,7 +232,7 @@
 
     <div class="instruction-banner">
       <strong>📱 How to Test Checkpoint Scanning:</strong><br>
-      1. Open the <strong>Region Security Guard</strong> app in Expo Go.<br>
+      1. Open the <strong>Region Security Guard</strong> app on your device.<br>
       2. Ensure you are <strong>Clocked In</strong> (use "Demo Mode" on the Clock tab to bypass GPS if needed).<br>
       3. Navigate to the <strong>QR Patrol</strong> tab and tap <strong>"SCAN CHECKPOINT"</strong>.<br>
       4. Point your phone camera directly at the QR codes on this monitor screen, or print them out!

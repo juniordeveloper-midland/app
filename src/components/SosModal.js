@@ -153,7 +153,7 @@ export default function SosModal({ visible, onClose }) {
           <View style={styles.modalBody}>
             {phase === 'transmitting' ? (
               <View style={styles.transmittingBox}>
-                <ActivityIndicator size="large" color="#ef4444" style={{ marginBottom: 12 }} />
+                <ActivityIndicator size="large" color="#EB0505" style={{ marginBottom: 12 }} />
                 <Text style={styles.transmittingTitle}>Alert sent to control room...</Text>
                 <Text style={styles.transmittingCount}>
                   Awaiting acknowledgment ({countdown}s)
@@ -245,14 +245,16 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   modalCard: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#262626',
     borderRadius: 20,
     width: '100%',
     maxWidth: 400,
     overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: '#404040',
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.35,
     shadowRadius: 20,
     elevation: 10,
   },
@@ -263,7 +265,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   headerAlert: {
-    backgroundColor: '#dc2626',
+    backgroundColor: '#EB0505',
   },
   headerAck: {
     backgroundColor: '#059669',
@@ -291,11 +293,11 @@ const styles = StyleSheet.create({
   transmittingTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#0f172a',
+    color: '#ffffff',
   },
   transmittingCount: {
     fontSize: 13,
-    color: '#dc2626',
+    color: '#EB0505',
     fontWeight: '600',
     marginTop: 4,
   },
@@ -309,22 +311,22 @@ const styles = StyleSheet.create({
   ackTitle: {
     fontSize: 18,
     fontWeight: '800',
-    color: '#047857',
+    color: '#34d399',
   },
   ackDescription: {
     fontSize: 12,
-    color: '#64748b',
+    color: '#9ca3af',
     textAlign: 'center',
     marginTop: 4,
     lineHeight: 18,
   },
   summaryCard: {
-    backgroundColor: '#f8fafc',
+    backgroundColor: '#333333',
     borderRadius: 12,
     padding: 14,
     marginVertical: 14,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
+    borderColor: '#404040',
     gap: 6,
   },
   summaryRow: {
@@ -334,12 +336,12 @@ const styles = StyleSheet.create({
   },
   summaryLabel: {
     fontSize: 12,
-    color: '#64748b',
+    color: '#9ca3af',
     fontWeight: '600',
   },
   summaryValue: {
     fontSize: 12,
-    color: '#0f172a',
+    color: '#ffffff',
     fontWeight: '700',
   },
   buttonStack: {
@@ -365,7 +367,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    backgroundColor: '#0f172a',
+    backgroundColor: '#404040',
     borderRadius: 10,
     paddingVertical: 12,
   },
@@ -379,7 +381,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dismissButtonText: {
-    color: '#64748b',
+    color: '#9ca3af',
     fontSize: 13,
     fontWeight: '600',
   },

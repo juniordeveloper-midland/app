@@ -165,7 +165,7 @@ export default function PatrolScreen({ navigation }) {
         {/* Demo Helper & Reset */}
         <View style={styles.footerOptions}>
           <View style={styles.qrHelperCard}>
-            <Ionicons name="information-circle-outline" size={18} color="#0284c7" />
+            <Ionicons name="information-circle-outline" size={18} color="#EB0505" />
             <Text style={styles.qrHelperText}>
               Scan QR codes containing CP-001 to CP-004. You can open{' '}
               <Text style={{ fontWeight: '700' }}>qr-test-codes.html</Text> in any browser to display
@@ -213,7 +213,7 @@ export default function PatrolScreen({ navigation }) {
 const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
-    backgroundColor: '#f8fafc',
+    backgroundColor: '#333333',
   },
   scrollArea: {
     flex: 1,
@@ -223,10 +223,10 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
   },
   lockedNoticeCard: {
-    backgroundColor: '#fffbeb',
+    backgroundColor: '#2a2416',
     borderRadius: 14,
     borderWidth: 1,
-    borderColor: '#fde68a',
+    borderColor: '#854d0e',
     padding: 14,
     flexDirection: 'row',
     gap: 12,
@@ -236,18 +236,18 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#fef3c7',
+    backgroundColor: '#451a03',
     alignItems: 'center',
     justifyContent: 'center',
   },
   lockedNoticeTitle: {
     fontSize: 14,
     fontWeight: '800',
-    color: '#92400e',
+    color: '#fef3c7',
   },
   lockedNoticeDescription: {
     fontSize: 12,
-    color: '#b45309',
+    color: '#fde68a',
     marginTop: 2,
     lineHeight: 16,
   },
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
-    backgroundColor: '#b45309',
+    backgroundColor: '#EB0505',
     alignSelf: 'flex-start',
     paddingHorizontal: 12,
     paddingVertical: 6,
@@ -268,15 +268,15 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   overviewCard: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#262626',
     borderRadius: 16,
     padding: 16,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
+    borderColor: '#404040',
     marginBottom: 12,
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.15,
     shadowRadius: 3,
     elevation: 2,
   },
@@ -289,45 +289,45 @@ const styles = StyleSheet.create({
   overviewSubtitle: {
     fontSize: 11,
     fontWeight: '800',
-    color: '#0284c7',
+    color: '#EB0505',
     letterSpacing: 0.8,
   },
   overviewTitle: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#0f172a',
+    color: '#ffffff',
     marginTop: 1,
   },
   progressPill: {
-    backgroundColor: '#f1f5f9',
+    backgroundColor: '#333333',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
+    borderColor: '#4d4d4d',
   },
   progressPillComplete: {
-    backgroundColor: '#ecfdf5',
-    borderColor: '#a7f3d0',
+    backgroundColor: 'rgba(16, 185, 129, 0.15)',
+    borderColor: 'rgba(16, 185, 129, 0.35)',
   },
   progressPillText: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#475569',
+    color: '#d1d5db',
   },
   progressPillTextComplete: {
-    color: '#047857',
+    color: '#34d399',
   },
   progressBarBg: {
     height: 10,
-    backgroundColor: '#f1f5f9',
+    backgroundColor: '#3a3a3a',
     borderRadius: 5,
     overflow: 'hidden',
     marginBottom: 8,
   },
   progressBarFill: {
     height: '100%',
-    backgroundColor: '#0284c7',
+    backgroundColor: '#EB0505',
     borderRadius: 5,
   },
   progressBarFillComplete: {
@@ -338,7 +338,7 @@ const styles = StyleSheet.create({
   },
   overviewFooterText: {
     fontSize: 12,
-    color: '#64748b',
+    color: '#9ca3af',
     fontWeight: '500',
   },
   scanTriggerButton: {
@@ -346,18 +346,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 14,
-    backgroundColor: '#0f172a',
+    backgroundColor: '#EB0505',
     borderRadius: 16,
     paddingVertical: 14,
     marginBottom: 16,
-    shadowColor: '#0f172a',
+    shadowColor: '#EB0505',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
+    shadowOpacity: 0.35,
     shadowRadius: 6,
     elevation: 4,
   },
   scanTriggerDisabled: {
-    backgroundColor: '#e2e8f0',
+    backgroundColor: '#404040',
     shadowOpacity: 0,
     elevation: 0,
   },
@@ -368,15 +368,15 @@ const styles = StyleSheet.create({
     letterSpacing: 0.8,
   },
   scanTriggerTitleDisabled: {
-    color: '#94a3b8',
+    color: '#9ca3af',
   },
   scanTriggerSubtitle: {
-    color: '#94a3b8',
+    color: '#fecaca',
     fontSize: 11,
     fontWeight: '500',
   },
   scanTriggerSubtitleDisabled: {
-    color: '#cbd5e1',
+    color: '#6b7280',
   },
   listSection: {
     marginBottom: 16,
@@ -384,7 +384,7 @@ const styles = StyleSheet.create({
   sectionHeader: {
     fontSize: 11,
     fontWeight: '800',
-    color: '#64748b',
+    color: '#9ca3af',
     letterSpacing: 0.8,
     marginBottom: 6,
     paddingLeft: 4,
@@ -395,18 +395,18 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   qrHelperCard: {
-    backgroundColor: '#f0f9ff',
+    backgroundColor: 'rgba(235, 5, 5, 0.12)',
     borderRadius: 12,
     padding: 12,
     borderWidth: 1,
-    borderColor: '#bae6fd',
+    borderColor: 'rgba(235, 5, 5, 0.35)',
     flexDirection: 'row',
     gap: 8,
     alignItems: 'flex-start',
   },
   qrHelperText: {
     fontSize: 11,
-    color: '#0369a1',
+    color: '#fca5a5',
     flex: 1,
     lineHeight: 16,
   },
@@ -419,7 +419,7 @@ const styles = StyleSheet.create({
   },
   resetButtonText: {
     fontSize: 12,
-    color: '#64748b',
+    color: '#9ca3af',
     fontWeight: '600',
   },
 });

@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
     marginVertical: 6,
   },
   cardActive: {
-    backgroundColor: '#0f172a',
-    borderColor: '#059669',
+    backgroundColor: '#262626',
+    borderColor: '#10b981',
     shadowColor: '#10b981',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.15,
@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   cardInactive: {
-    backgroundColor: '#ffffff',
-    borderColor: '#e2e8f0',
+    backgroundColor: '#262626',
+    borderColor: '#404040',
   },
   headerRow: {
     flexDirection: 'row',

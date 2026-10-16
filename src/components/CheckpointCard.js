@@ -31,7 +31,7 @@ export default function CheckpointCard({
 
       <View style={styles.detailsSection}>
         <View style={styles.locationRow}>
-          <Ionicons name="location-outline" size={14} color="#64748b" />
+          <Ionicons name="location-outline" size={14} color="#9ca3af" />
           <Text style={styles.locationText}>{checkpoint.location}</Text>
         </View>
 
@@ -62,7 +62,7 @@ export default function CheckpointCard({
           <MaterialCommunityIcons
             name="qrcode-scan"
             size={18}
-            color={isClockedIn ? '#ffffff' : '#94a3b8'}
+            color={isClockedIn ? '#ffffff' : '#9ca3af'}
           />
           <Text
             style={[
@@ -80,23 +80,24 @@ export default function CheckpointCard({
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#262626',
     borderRadius: 14,
     padding: 16,
     marginVertical: 6,
     borderWidth: 1,
+    borderColor: '#404040',
     shadowColor: '#000000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
+    shadowOpacity: 0.15,
     shadowRadius: 3,
     elevation: 2,
   },
   cardDone: {
-    borderColor: '#a7f3d0',
-    backgroundColor: '#f0fdf4',
+    borderColor: '#059669',
+    backgroundColor: '#1b2d24',
   },
   cardDue: {
-    borderColor: '#e2e8f0',
+    borderColor: '#404040',
   },
   topRow: {
     flexDirection: 'row',
@@ -120,9 +121,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#10b981',
   },
   circleDue: {
-    backgroundColor: '#f1f5f9',
+    backgroundColor: '#333333',
     borderWidth: 1,
-    borderColor: '#cbd5e1',
+    borderColor: '#4d4d4d',
   },
   numberText: {
     fontSize: 13,
@@ -132,18 +133,18 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
   numberTextDue: {
-    color: '#475569',
+    color: '#d1d5db',
   },
   checkpointId: {
     fontSize: 11,
     fontWeight: '800',
-    color: '#0284c7',
+    color: '#EB0505',
     letterSpacing: 0.5,
   },
   checkpointName: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#0f172a',
+    color: '#ffffff',
   },
   detailsSection: {
     marginTop: 10,
@@ -156,7 +157,7 @@ const styles = StyleSheet.create({
   },
   locationText: {
     fontSize: 12,
-    color: '#64748b',
+    color: '#9ca3af',
     flex: 1,
   },
   scanMetaRow: {
@@ -167,7 +168,7 @@ const styles = StyleSheet.create({
   },
   scanMetaText: {
     fontSize: 12,
-    color: '#047857',
+    color: '#34d399',
     fontWeight: '600',
   },
   dueMetaRow: {
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
   },
   dueMetaText: {
     fontSize: 12,
-    color: '#b45309',
+    color: '#fde68a',
     fontWeight: '500',
   },
   scanButton: {
@@ -186,13 +187,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    backgroundColor: '#0f172a',
+    backgroundColor: '#EB0505',
     borderRadius: 10,
     paddingVertical: 10,
     marginTop: 12,
   },
   scanButtonDisabled: {
-    backgroundColor: '#e2e8f0',
+    backgroundColor: '#404040',
   },
   scanButtonText: {
     color: '#ffffff',
@@ -201,6 +202,6 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   scanButtonTextDisabled: {
-    color: '#94a3b8',
+    color: '#9ca3af',
   },
 });

@@ -4,30 +4,19 @@
  */
 
 export const MOCK_GUARD = {
-  name: "Muthamizh",
+  name: "Alex",
   id: "G-1001",
   role: "Senior Security Officer",
   avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
 };
 
-/**
- * ============================================================================
- * SITE GEOFENCE CONFIGURATION
- * 
- * 📍 HOW TO TEST REAL GPS CLOCK-IN:
- * Replace lat and lng below with your current GPS coordinates.
- * To find your current coordinates, open Google Maps or check the GPS coordinates
- * displayed on the "Clock" tab of this app.
- * 
- * Alternatively, keep "Demo Mode" toggled ON in the app to bypass geofence checks anywhere.
- * ============================================================================
- */
+
 export const MOCK_SITE = {
   name: "MHZ Office",
   address: "Harivardhan street,Chennai",
-  lat: 12.964887, // <-- Replace with your current latitude to test real geofence
-  lng: 80.249218, // <-- Replace with your current longitude to test real geofence
-  radius: 100,  // Allowed clock-in perimeter in metres
+  lat: 12.964887,
+  lng: 80.249218,
+  radius: 100,
 };
 
 export const MOCK_SHIFT = {

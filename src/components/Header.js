@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useGuardStore } from '../store/useGuardStore';
 import { MOCK_GUARD, MOCK_SITE } from '../data/mockData';
@@ -12,8 +12,12 @@ export default function Header({ title, subtitle }) {
     <View style={styles.headerContainer}>
       <View style={styles.topRow}>
         <View style={styles.brandRow}>
-          <View style={styles.iconCircle}>
-            <MaterialCommunityIcons name="shield-check" size={24} color="#38bdf8" />
+          <View style={styles.logoContainer}>
+            <Image
+              source={require('../../assets/RSG.jpg')}
+              style={styles.logoImage}
+              resizeMode="contain"
+            />
           </View>
           <View>
             <Text style={styles.brandTitle}>REGION SECURITY</Text>
@@ -50,12 +54,12 @@ export default function Header({ title, subtitle }) {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    backgroundColor: '#0f172a', // Dark navy
+    backgroundColor: '#262626',
     paddingTop: 14,
     paddingBottom: 16,
     paddingHorizontal: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#1e293b',
+    borderBottomColor: '#404040',
   },
   topRow: {
     flexDirection: 'row',
@@ -67,15 +71,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 10,
   },
-  iconCircle: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#1e293b',
-    borderWidth: 1.5,
-    borderColor: '#38bdf8',
+  logoContainer: {
+    width: 42,
+    height: 42,
+    borderRadius: 10,
+    backgroundColor: '#ffffff',
+    padding: 3,
+    borderWidth: 2,
+    borderColor: '#EB0505',
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'hidden',
+    shadowColor: '#EB0505',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.35,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  logoImage: {
+    width: '100%',
+    height: '100%',
   },
   brandTitle: {
     color: '#ffffff',
@@ -84,9 +99,9 @@ const styles = StyleSheet.create({
     letterSpacing: 0.8,
   },
   brandSubtitle: {
-    color: '#94a3b8',
+    color: '#EB0505',
     fontSize: 10,
-    fontWeight: '700',
+    fontWeight: '800',
     letterSpacing: 1.2,
   },
   statusBadgesGroup: {

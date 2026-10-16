@@ -142,7 +142,7 @@ export default function CameraScannerModal({
         {/* Camera Permission State: Loading */}
         {!permission ? (
           <View style={styles.permissionContainer}>
-            <ActivityIndicator size="large" color="#38bdf8" />
+            <ActivityIndicator size="large" color="#EB0505" />
             <Text style={styles.permissionText}>Loading camera module...</Text>
           </View>
         ) : !permission.granted ? (
@@ -260,7 +260,7 @@ export default function CameraScannerModal({
         {/* Demo Simulator Bar: Instant testing without physical QR printouts */}
         <View style={styles.simulatorBar}>
           <View style={styles.simHeader}>
-            <MaterialCommunityIcons name="test-tube" size={16} color="#38bdf8" />
+            <MaterialCommunityIcons name="test-tube" size={16} color="#EB0505" />
             <Text style={styles.simHeaderText}>QUICK DEMO SIMULATOR</Text>
             <Text style={styles.simSubText}>(Tap to test scan)</Text>
           </View>
@@ -304,7 +304,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
-    backgroundColor: '#0f172a',
+    backgroundColor: '#262626',
+    borderBottomWidth: 1,
+    borderBottomColor: '#404040',
     zIndex: 10,
   },
   headerTitle: {
@@ -317,7 +319,7 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: '#1e293b',
+    backgroundColor: '#383838',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -380,7 +382,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 28,
     height: 28,
-    borderColor: '#38bdf8',
+    borderColor: '#EB0505',
   },
   cornerTL: {
     top: 0,
@@ -438,7 +440,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#059669',
   },
   feedbackError: {
-    backgroundColor: '#dc2626',
+    backgroundColor: '#EB0505',
   },
   feedbackText: {
     color: '#ffffff',
@@ -450,7 +452,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    backgroundColor: '#0f172a',
+    backgroundColor: '#333333',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 30,
@@ -463,7 +465,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   permissionSub: {
-    color: '#94a3b8',
+    color: '#9ca3af',
     fontSize: 14,
     textAlign: 'center',
     lineHeight: 20,
@@ -471,16 +473,16 @@ const styles = StyleSheet.create({
   },
   permissionButton: {
     marginTop: 10,
-    backgroundColor: '#0284c7',
+    backgroundColor: '#EB0505',
     paddingHorizontal: 22,
     paddingVertical: 12,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    shadowColor: '#0284c7',
+    shadowColor: '#EB0505',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.35,
     shadowRadius: 6,
     elevation: 4,
   },
@@ -490,14 +492,14 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   permissionText: {
-    color: '#94a3b8',
+    color: '#9ca3af',
     fontSize: 14,
     marginTop: 8,
   },
   simulatorBar: {
-    backgroundColor: '#0f172a',
+    backgroundColor: '#262626',
     borderTopWidth: 1,
-    borderTopColor: '#1e293b',
+    borderTopColor: '#404040',
     paddingHorizontal: 12,
     paddingTop: 10,
     paddingBottom: Platform.OS === 'ios' ? 24 : 12,
@@ -509,13 +511,13 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   simHeaderText: {
-    color: '#38bdf8',
+    color: '#EB0505',
     fontSize: 11,
     fontWeight: '800',
     letterSpacing: 0.5,
   },
   simSubText: {
-    color: '#64748b',
+    color: '#9ca3af',
     fontSize: 11,
   },
   simButtonsRow: {
@@ -525,9 +527,9 @@ const styles = StyleSheet.create({
   },
   simButton: {
     flex: 1,
-    backgroundColor: '#1e293b',
+    backgroundColor: '#333333',
     borderWidth: 1,
-    borderColor: '#38bdf8',
+    borderColor: '#EB0505',
     borderRadius: 8,
     paddingVertical: 8,
     alignItems: 'center',
@@ -538,7 +540,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(239, 68, 68, 0.1)',
   },
   simButtonText: {
-    color: '#e0f2fe',
+    color: '#ffffff',
     fontSize: 11,
     fontWeight: '700',
   },
