@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
   Text,
@@ -6,11 +6,11 @@ import {
   Modal,
   TouchableOpacity,
   SafeAreaView,
-  Alert,
   ActivityIndicator,
   Platform,
 } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
+import { useIsFocused } from '@react-navigation/native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { MOCK_CHECKPOINTS } from '../data/mockData';
 
@@ -20,41 +20,88 @@ export default function CameraScannerModal({
   onBarcodeScanned,
   isClockedIn,
 }) {
+  const isScreenFocused = useIsFocused();
   const [permission, requestPermission] = useCameraPermissions();
   const [torchEnabled, setTorchEnabled] = useState(false);
-  const [isScanningLocked, setIsScanningLocked] = useState(false);
+  const [isScanningDisabled, setIsScanningDisabled] = useState(false);
   const [statusMessage, setStatusMessage] = useState(null);
+  const [cameraError, setCameraError] = useState(null);
 
-  const handleBarCodeRead = ({ data }) => {
-    if (isScanningLocked) return;
-    setIsScanningLocked(true);
+  const scanLockTimeoutRef = useRef(null);
 
-    const result = onBarcodeScanned(data);
+  // Reset states when modal visibility changes
+  useEffect(() => {
+    if (!visible) {
+      setIsScanningDisabled(false);
+      setStatusMessage(null);
+      setCameraError(null);
+      setTorchEnabled(false);
+      if (scanLockTimeoutRef.current) {
+        clearTimeout(scanLockTimeoutRef.current);
+        scanLockTimeoutRef.current = null;
+      }
+    }
+  }, [visible]);
+
+  // Clean up timer on unmount
+  useEffect(() => {
+    return () => {
+      if (scanLockTimeoutRef.current) {
+        clearTimeout(scanLockTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Handle scanned QR barcode data
+  const handleBarcodeScannedInternal = (scanningResult) => {
+    if (isScanningDisabled) return;
+
+    // Disable scanner immediately for 2 seconds to avoid duplicate scans
+    setIsScanningDisabled(true);
+
+    const rawData = (scanningResult?.data || '').trim();
+    const result = onBarcodeScanned ? onBarcodeScanned(rawData) : null;
 
     if (result && result.success) {
       setStatusMessage({ type: 'success', text: result.message });
-      setTimeout(() => {
-        setIsScanningLocked(false);
+      // On success, show confirmation briefly and close modal
+      scanLockTimeoutRef.current = setTimeout(() => {
+        setIsScanningDisabled(false);
         setStatusMessage(null);
         onClose();
-      }, 1200);
+      }, 1400);
     } else {
+      const errorText =
+        result?.message ||
+        `Invalid QR code: "${rawData}". Checkpoints must match CP-001 through CP-004.`;
       setStatusMessage({
         type: 'error',
-        text: result?.message || `Invalid QR code: ${data}`,
+        text: errorText,
       });
-      setTimeout(() => {
-        setIsScanningLocked(false);
+
+      // Keep scanner disabled for 2 seconds, then re-enable
+      scanLockTimeoutRef.current = setTimeout(() => {
+        setIsScanningDisabled(false);
         setStatusMessage(null);
-      }, 2500);
+      }, 2000);
     }
   };
 
+  // Helper for 1-tap testing without physical camera / printouts
   const simulateScan = (code) => {
-    handleBarCodeRead({ data: code });
+    handleBarcodeScannedInternal({ data: code });
   };
 
   if (!visible) return null;
+
+  // Determine if CameraView can be safely mounted
+  const canMountCamera = Boolean(
+    isScreenFocused &&
+    visible &&
+    permission &&
+    permission.granted &&
+    !cameraError
+  );
 
   return (
     <Modal
@@ -64,12 +111,13 @@ export default function CameraScannerModal({
       onRequestClose={onClose}
     >
       <SafeAreaView style={styles.container}>
-        {/* Top Navigation Bar */}
+        {/* Top Header Bar */}
         <View style={styles.topBar}>
           <TouchableOpacity
             style={styles.circleButton}
             onPress={onClose}
             hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+            activeOpacity={0.7}
           >
             <Ionicons name="close" size={24} color="#ffffff" />
           </TouchableOpacity>
@@ -80,6 +128,8 @@ export default function CameraScannerModal({
             style={[styles.circleButton, torchEnabled && styles.torchActive]}
             onPress={() => setTorchEnabled((prev) => !prev)}
             hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+            activeOpacity={0.7}
+            disabled={!canMountCamera}
           >
             <Ionicons
               name={torchEnabled ? 'flash' : 'flash-outline'}
@@ -89,53 +139,85 @@ export default function CameraScannerModal({
           </TouchableOpacity>
         </View>
 
-        {/* Camera Permission Handling */}
+        {/* Camera Permission State: Loading */}
         {!permission ? (
           <View style={styles.permissionContainer}>
             <ActivityIndicator size="large" color="#38bdf8" />
             <Text style={styles.permissionText}>Loading camera module...</Text>
           </View>
         ) : !permission.granted ? (
+          /* Camera Permission State: Not Granted */
           <View style={styles.permissionContainer}>
-            <MaterialCommunityIcons name="camera-off" size={48} color="#ef4444" />
+            <MaterialCommunityIcons name="camera-off" size={54} color="#ef4444" />
             <Text style={styles.permissionHeading}>Camera Access Required</Text>
             <Text style={styles.permissionSub}>
               Camera permission is required to scan security patrol QR codes on site.
             </Text>
-            <TouchableOpacity style={styles.permissionButton} onPress={requestPermission}>
-              <Text style={styles.permissionButtonText}>Grant Camera Permission</Text>
+            <TouchableOpacity
+              style={styles.permissionButton}
+              onPress={requestPermission}
+              activeOpacity={0.8}
+            >
+              <Ionicons name="camera" size={18} color="#ffffff" />
+              <Text style={styles.permissionButtonText}>Grant permission</Text>
+            </TouchableOpacity>
+          </View>
+        ) : cameraError ? (
+          /* Camera Runtime / Mount Error State */
+          <View style={styles.permissionContainer}>
+            <Ionicons name="alert-circle-outline" size={54} color="#ef4444" />
+            <Text style={styles.permissionHeading}>Camera Error</Text>
+            <Text style={styles.permissionSub}>{cameraError}</Text>
+            <TouchableOpacity
+              style={styles.permissionButton}
+              onPress={() => setCameraError(null)}
+              activeOpacity={0.8}
+            >
+              <Ionicons name="refresh" size={18} color="#ffffff" />
+              <Text style={styles.permissionButtonText}>Retry Camera</Text>
             </TouchableOpacity>
           </View>
         ) : (
-          /* Live Camera View */
+          /* Live Camera Viewport Container (Parent View has flex: 1 with full dimensions) */
           <View style={styles.cameraWrapper}>
-            <CameraView
-              style={StyleSheet.absoluteFillObject}
-              facing="back"
-              enableTorch={torchEnabled}
-              barcodeScannerSettings={{
-                barcodeTypes: ['qr'],
-              }}
-              onBarcodeScanned={isScanningLocked ? undefined : handleBarCodeRead}
-            />
+            {canMountCamera && (
+              <CameraView
+                style={[StyleSheet.absoluteFill, styles.cameraView]}
+                facing="back"
+                enableTorch={torchEnabled}
+                barcodeScannerSettings={{
+                  barcodeTypes: ['qr'],
+                }}
+                onBarcodeScanned={isScanningDisabled ? undefined : handleBarcodeScannedInternal}
+                onMountError={(error) => {
+                  setCameraError(
+                    error?.message ||
+                      'Camera could not be started. Please check device permissions.'
+                  );
+                }}
+              />
+            )}
 
-            {/* Viewfinder Target Overlay */}
-            <View style={styles.overlayContainer}>
+            {/* Viewfinder Target & Instructions Overlay */}
+            <View style={styles.overlayContainer} pointerEvents="box-none">
               <View style={styles.overlayTop}>
                 <Text style={styles.instructionText}>
                   Align checkpoint QR code within the frame
                 </Text>
+                {isScanningDisabled && (
+                  <Text style={styles.cooldownText}>Scanner paused (2s debounce)</Text>
+                )}
               </View>
 
-              <View style={styles.viewfinderCenter}>
-                <View style={styles.viewfinderTarget}>
-                  {/* Four Corner Marks */}
+              <View style={styles.viewfinderCenter} pointerEvents="box-none">
+                <View style={styles.viewfinderTarget} pointerEvents="box-none">
+                  {/* Four Corner Alignment Brackets */}
                   <View style={[styles.corner, styles.cornerTL]} />
                   <View style={[styles.corner, styles.cornerTR]} />
                   <View style={[styles.corner, styles.cornerBL]} />
                   <View style={[styles.corner, styles.cornerBR]} />
 
-                  {isScanningLocked && (
+                  {isScanningDisabled && (
                     <View style={styles.scanningIndicatorOverlay}>
                       <ActivityIndicator size="large" color="#10b981" />
                     </View>
@@ -143,7 +225,8 @@ export default function CameraScannerModal({
                 </View>
               </View>
 
-              <View style={styles.overlayBottom}>
+              {/* Bottom Feedback Banner Area */}
+              <View style={styles.overlayBottom} pointerEvents="box-none">
                 {statusMessage ? (
                   <View
                     style={[
@@ -174,7 +257,7 @@ export default function CameraScannerModal({
           </View>
         )}
 
-        {/* Demo Simulator Bar: Allows 1-tap testing without physical printouts */}
+        {/* Demo Simulator Bar: Instant testing without physical QR printouts */}
         <View style={styles.simulatorBar}>
           <View style={styles.simHeader}>
             <MaterialCommunityIcons name="test-tube" size={16} color="#38bdf8" />
@@ -187,7 +270,8 @@ export default function CameraScannerModal({
                 key={cp.id}
                 style={styles.simButton}
                 onPress={() => simulateScan(cp.id)}
-                disabled={isScanningLocked}
+                disabled={isScanningDisabled}
+                activeOpacity={0.7}
               >
                 <Text style={styles.simButtonText}>{cp.id}</Text>
               </TouchableOpacity>
@@ -195,7 +279,8 @@ export default function CameraScannerModal({
             <TouchableOpacity
               style={[styles.simButton, styles.simButtonInvalid]}
               onPress={() => simulateScan('INVALID-CODE-999')}
-              disabled={isScanningLocked}
+              disabled={isScanningDisabled}
+              activeOpacity={0.7}
             >
               <Text style={styles.simButtonTextInvalid}>Bad QR</Text>
             </TouchableOpacity>
@@ -209,6 +294,8 @@ export default function CameraScannerModal({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
+    height: '100%',
     backgroundColor: '#000000',
   },
   topBar: {
@@ -239,17 +326,28 @@ const styles = StyleSheet.create({
   },
   cameraWrapper: {
     flex: 1,
+    width: '100%',
+    height: '100%',
     position: 'relative',
+    backgroundColor: '#000000',
     overflow: 'hidden',
+  },
+  cameraView: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    ...StyleSheet.absoluteFillObject,
   },
   overlayContainer: {
     ...StyleSheet.absoluteFillObject,
+    width: '100%',
+    height: '100%',
     justifyContent: 'space-between',
     zIndex: 2,
   },
   overlayTop: {
-    backgroundColor: 'rgba(0,0,0,0.6)',
-    paddingVertical: 18,
+    backgroundColor: 'rgba(0,0,0,0.65)',
+    paddingVertical: 14,
     paddingHorizontal: 24,
     alignItems: 'center',
   },
@@ -258,6 +356,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     textAlign: 'center',
+  },
+  cooldownText: {
+    color: '#f59e0b',
+    fontSize: 11,
+    fontWeight: '700',
+    marginTop: 4,
+    letterSpacing: 0.3,
   },
   viewfinderCenter: {
     alignItems: 'center',
@@ -308,11 +413,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   overlayBottom: {
-    backgroundColor: 'rgba(0,0,0,0.6)',
-    paddingVertical: 18,
+    backgroundColor: 'rgba(0,0,0,0.65)',
+    paddingVertical: 14,
     paddingHorizontal: 20,
     alignItems: 'center',
-    minHeight: 80,
+    minHeight: 74,
     justifyContent: 'center',
   },
   supportedText: {
@@ -343,6 +448,8 @@ const styles = StyleSheet.create({
   },
   permissionContainer: {
     flex: 1,
+    width: '100%',
+    height: '100%',
     backgroundColor: '#0f172a',
     alignItems: 'center',
     justifyContent: 'center',
@@ -360,13 +467,22 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
     lineHeight: 20,
+    maxWidth: 300,
   },
   permissionButton: {
     marginTop: 10,
     backgroundColor: '#0284c7',
-    paddingHorizontal: 20,
+    paddingHorizontal: 22,
     paddingVertical: 12,
-    borderRadius: 8,
+    borderRadius: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    shadowColor: '#0284c7',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+    elevation: 4,
   },
   permissionButtonText: {
     color: '#ffffff',

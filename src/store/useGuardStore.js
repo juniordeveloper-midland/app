@@ -75,7 +75,12 @@ export const useGuardStore = create((set, get) => ({
           elapsedShiftSeconds: parsed.elapsedShiftSeconds || 0,
           demoMode: parsed.demoMode !== undefined ? parsed.demoMode : true,
           lastLocation: parsed.lastLocation || null,
-          checkpoints: parsed.checkpoints && parsed.checkpoints.length > 0 ? parsed.checkpoints : initialCheckpoints,
+          checkpoints: (parsed.checkpoints && parsed.checkpoints.length > 0)
+            ? initialCheckpoints.map((initCp) => {
+                const existing = parsed.checkpoints.find((p) => p.id === initCp.id);
+                return existing ? { ...initCp, status: existing.status, scannedAt: existing.scannedAt } : initCp;
+              })
+            : initialCheckpoints,
           geofenceEvents: parsed.geofenceEvents || [],
           geofenceBanner: parsed.geofenceBanner || null,
           hasAlertedOutside: Boolean(parsed.hasAlertedOutside),
