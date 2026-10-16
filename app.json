@@ -1,22 +1,46 @@
 {
   "expo": {
-    "name": "app",
-    "slug": "app",
+    "name": "Region Security Guard",
+    "slug": "region-security-guard",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Region Security Guard requires camera access to scan patrol checkpoint QR codes.",
+        "NSLocationWhenInUseUsageDescription": "Region Security Guard requires your GPS location to verify geofence perimeter clock-in and send emergency SOS coordinates."
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#0f172a",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
-      }
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION"
+      ]
     },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Region Security Guard requires camera access to scan patrol checkpoint QR codes."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Region Security Guard requires GPS location to verify site clock-in and emergency SOS."
+        }
+      ],
+      "expo-font"
+    ],
     "web": {
       "favicon": "./assets/favicon.png"
     }
